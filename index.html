@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bablu Hair Patch Fixing – Review</title>
+<title>Bablu Hair Patch Fixing – Share your feedback</title>
 <style>
 :root{--gold:#d9a93b;--bg:#0b0b0b;--card:#161616;--tx:#f4efe3;--mut:#a79f8c}
 *{box-sizing:border-box}
@@ -16,87 +16,154 @@ p.s{text-align:center;color:var(--mut);margin:0 0 18px;font-size:14px}
 .stars{display:flex;justify-content:center;gap:8px;font-size:38px;cursor:pointer;user-select:none}
 .stars span{color:#444}.stars span.on{color:var(--gold)}
 .lbl{font-size:13px;color:var(--mut);margin-bottom:8px}
-.msg{font-size:17px;line-height:1.5;min-height:92px;white-space:pre-wrap}
+.msg{font-size:17px;line-height:1.5;min-height:80px;white-space:pre-wrap}
 .row{display:flex;gap:10px;margin-top:12px}
 button,a.b{flex:1;border:0;border-radius:12px;padding:14px 10px;font-size:15px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none}
 .g{background:var(--gold);color:#111}.o{background:#262626;color:var(--tx)}
 .n{font-size:12px;color:var(--mut);text-align:center;margin-top:10px;line-height:1.5}
-.ok{color:#8fd18f;text-align:center;font-size:13px;height:16px;margin-top:6px}
+.ok{color:#8fd18f;text-align:center;font-size:13px;min-height:16px;margin-top:6px}
 </style>
 </head>
 <body>
 <div class="w">
   <img class="logo" src="logo.png" alt="Bablu Hair Patch Fixing" onerror="this.style.display='none'">
   <h1>Bablu Hair Patch Fixing</h1>
-  <p class="s">Pilibhit · Aapka feedback hamare liye bahut zaroori hai 🙏</p>
+  <p class="s">Pilibhit · Thank you for visiting us 🙏</p>
 
   <div class="card">
-    <div class="lbl">1) Apni rating chuniye (apne asli experience ke hisaab se)</div>
+    <div class="lbl">1) Tap your rating, based on your own experience</div>
     <div class="stars" id="st"></div>
   </div>
 
   <div class="card">
-    <div class="lbl">2) Review likhne ka idea (sirf madad ke liye, apne shabdon mein badal sakte hain)</div>
+    <div class="lbl">2) A suggested review. Use it as it is, or change it to your own words</div>
     <div class="msg" id="msg"></div>
     <div class="row">
-      <button class="o" id="nx">🔄 Dusra idea</button>
-      <button class="g" id="cp">📋 Copy karein</button>
+      <button class="o" id="nx">🔄 Another one</button>
+      <button class="o" id="cp">📋 Copy</button>
     </div>
     <div class="ok" id="ok"></div>
   </div>
 
-  <button class="g" id="post" style="width:100%;font-size:17px;padding:16px">✅ Ye review copy karke Google par post karein</button>
-  <a class="b o" id="go" style="display:block;margin-top:10px" href="#" target="_blank" rel="noopener">Sirf Google review page kholein</a>
-  <div class="n">Google khulne par review box mein paste karein (zaroorat ho toh apne anubhav ke hisaab se badal lein) aur Post dabayein.<br>Ye ek suggestion hai, koi bhi rating aur koi bhi shabd aapki apni marzi se.</div>
+  <button class="g" id="post" style="width:100%;font-size:17px;padding:16px">Copy &amp; open Google review</button>
+  <a class="b o" id="go" style="display:block;margin-top:10px" href="#" target="_blank" rel="noopener">Just open the Google review page</a>
+  <div class="n">Google will open next. Paste the text into the review box, edit it if you like, and tap Post.<br>This is only a suggestion. Please share your honest experience.</div>
 </div>
 
 <script>
-// Google review link of Bablu Hair Patch Fixing (verified 27 Oct 2026)
 const REVIEW_URL="https://g.page/r/CdTDtgv3axhcEBM/review";
-// Ideas grouped by rating. Natural, varied, no price/offer claims.
-const IDEAS={
+
+/* ---------- Ready-made short reviews, by rating ---------- */
+const POOL={
 5:[
-"Bablu Hair Patch Fixing mein hair patch lagwaya, result bahut natural laga. Staff ka behavior bhi achha tha.",
-"Pilibhit mein hair patch ke liye achhi jagah. Owner ne pehle achhe se samjhaya, phir patch fit kiya. Mujhe kaam pasand aaya.",
-"Mera hair patch same day lag gaya aur dekhne mein bilkul asli baalon jaisa hai. Thank you Bablu Hair Patch Fixing!",
-"Free consultation mein poori jaankari mili, koi pressure nahi tha. Patch ka finishing bahut saaf hai.",
-"Bahut achha experience raha. Hairline natural lagi aur patch comfortable hai. Dosto ko bhi bataunga.",
-"Studio saaf-suthra hai aur kaam professional. Hair patch ki fitting aur styling dono achhe se hui.",
-"Baal kam hone se confidence kam ho gaya tha, yahan patch lagwane ke baad wapas confidence aaya. Highly recommended.",
-"Patch ki washing aur maintenance ke baare mein bhi achhe se bataya gaya. Service se main santusht hoon.",
-"Hair patch ka colour aur density bilkul meri tarah match ki gayi. Kaam time par aur achha hua.",
-"Behtareen kaam! Bina surgery ke natural look mil gaya. Pilibhit mein ye jagah try karni chahiye.",
-"Mere purane patch ki servicing karwayi, naya jaisa lag raha hai. Team ne dhyan se kaam kiya.",
-"Owner ka vyavhaar bahut achha hai aur har sawaal ka seedha jawab diya. Result dekhkar khushi hui.",
-"Hair wig ke liye aaya tha, options achhe se dikhaye gaye aur fit bhi perfect hai. Thank you.",
-"Shop dhoondhne mein aasaani hui, Station Road par Balaji Complex mein hai. Service bahut achhi rahi."
+"Got my hair patch done here and it looks completely natural. Very happy with the result.",
+"Great experience. The owner explained everything clearly before starting and the finish is really neat.",
+"Honestly didn't expect it to look this natural. Friends couldn't even tell. Thank you team!",
+"Clean studio, polite staff and a very natural result. Worth a visit if you're in Pilibhit.",
+"Was nervous about trying a hair patch, but they made me comfortable and the fitting was perfect.",
+"The hairline looks so real. Very professional work, I'm quite impressed.",
+"Good service and honest advice. No pressure at all, they just explained my options.",
+"Visited for a consultation and ended up getting a patch fitted. Super happy with it.",
+"Excellent work! The patch matches my hair colour and style really well.",
+"My confidence is back. The team was patient and the result looks great.",
+"Quick, neat and professional. Really liked the way the patch blends with my own hair.",
+"Very friendly owner, good knowledge and a clean setup. Recommended.",
+"Had my old patch serviced here. It feels brand new again. Thanks a lot!",
+"Comfortable to wear and looks natural. The staff also told me how to take care of it.",
+"One of the better places for hair patch work in Pilibhit. Happy with my experience.",
+"Smooth process from start to finish. The styling at the end was spot on.",
+"Great job on the fitting. Looks natural even in close-up. Will visit again for servicing.",
+"They took time to understand what I wanted and the result matches it exactly.",
+"Professional team and very reasonable communication. I'm satisfied with the work.",
+"Went in for a wig and the options were explained well. Fit and finish are great.",
+"Really good experience, the staff is supportive and the studio is well maintained.",
+"The patch feels light and looks natural. Thank you for the honest guidance!",
+"Very neat work. I got compliments from family the same day.",
+"Great service, easy to find on Station Road, and the result speaks for itself.",
+"Loved the finishing. The team pays attention to small details.",
+"Happy with the colour matching and density. Looks just like my natural hair.",
+"I recommend this place to anyone looking for a natural-looking hair solution.",
+"Skilled work and a very welcoming owner. Glad I came here.",
+"Everything was explained clearly, from care to washing. Very satisfied.",
+"Awesome work, bhai. Natural look aaya hai, exactly what I wanted.",
+"Very good experience. Patch ekdum natural lag raha hai. Thanks to the team.",
+"Good place, honest people and neat work. Happy customer.",
+"Excellent service! The team made the whole process easy and stress free.",
+"The fitting was quick and painless, and the look is really natural.",
+"Impressed with the quality of work. Nothing looks fake at all.",
+"Well done team. My new look feels really comfortable.",
+"Supportive staff and a good result. I'd happily visit again.",
+"Nice and clean studio. The patch looks great and sits perfectly.",
+"Got exactly the look I was hoping for. Thank you!",
+"Very good work and good behaviour. Recommended for anyone facing hair loss.",
+"Fantastic result. It was a pleasant experience from start to end.",
+"They guided me step by step and the final look is amazing.",
+"Professional, polite and quick. Really glad I chose this place.",
+"My patch looks so natural that even I forget it's there. Great work!",
+"Best experience I've had for hair patch fixing in the city.",
+"Honest suggestions and careful work. I'm very pleased.",
+"Neat finishing, natural hairline and friendly service. Thank you!",
+"Went with some doubts, came back happy. The result looks really good.",
+"Satisfied with the service and the follow-up advice. Good team.",
+"Very natural look and a comfortable fit. Would recommend."
 ],
 4:[
-"Kaam achha laga, patch natural dikhta hai. Thoda wait karna pada par result sahi raha.",
-"Hair patch ka experience achha raha. Staff madadgaar hai aur fitting sahi hui.",
-"Overall achha service. Patch ki finishing achhi hai, bas thoda aur time dene par aur behtar ho sakta tha.",
-"Consultation achha raha aur patch comfortable hai. Main santusht hoon."
+"Good work and a natural look. Had to wait a little, but the result was worth it.",
+"Nice experience overall. The patch looks natural and the staff was helpful.",
+"Happy with the fitting and finish. Just a little wait at the start, otherwise all good.",
+"Good service and clean studio. The result looks natural.",
+"Pleased with the work. A few more options to see would have been nice, but I'm satisfied.",
+"Helpful team and neat work. I'd recommend it.",
+"Overall a good experience, and the patch fits comfortably.",
+"Quality work and honest advice. Slightly busy when I went, but handled well."
 ],
 3:[
-"Service theek-thak rahi. Patch ka kaam sahi hai, par kuch cheezein aur behtar ho sakti hain.",
-"Average experience. Fitting theek hui, par samjhaya aur achhe se ja sakta tha."
+"The work was okay and the patch looks fine. Some things could be explained a bit better.",
+"Average experience overall. The fitting was fine, but I expected a bit more detail on aftercare.",
+"Decent service. The result is acceptable, though there is room to improve."
 ],
 2:[
-"Mera experience kuch khaas nahi raha. Umeed thi ki fitting aur behtar hogi.",
-"Service mein sudhar ki zarurat hai. Mujhe jo bataya gaya aur jo mila usme thoda fark laga."
+"The result was below what I expected and some points were not explained clearly.",
+"Not fully satisfied. The communication could have been better."
 ],
 1:[
-"Mera experience achha nahi raha. Main chahunga ki service aur communication mein sudhar ho."
+"My experience was not good. I hope the team improves its service and communication."
 ]};
-let rating=5,idx={};
+
+/* ---------- Mix-and-match builder for extra variety (5 and 4 stars) ---------- */
+const OPEN=["Really happy with","Very satisfied with","Great experience with","Good experience at","Glad I visited","Pleased with","Thankful for","Had a nice time at"];
+const WHAT=["my new hair patch","the hair patch fitting","the consultation and fitting","the wig fitting","the whole process","the hair patch service","my patch servicing","the styling and finish"];
+const WHY=["The look is natural and comfortable.","The staff was polite and patient.","It was explained clearly before starting.","The finish is neat and professional.","It matches my hair colour well.","The studio is clean and well kept.","The owner gave honest advice.","The hairline looks very natural.","It was quick and hassle free."];
+const END=["Thank you, team!","Would recommend.","Will visit again.","Worth a visit.","Thanks a lot!","Happy customer.","Highly recommended.",""];
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function build(){
+  let t=pick(OPEN)+" "+pick(WHAT)+". "+pick(WHY);
+  if(Math.random()<.45){let w2=pick(WHY);while(t.includes(w2))w2=pick(WHY);t+=" "+w2}
+  const e=pick(END);if(e)t+=" "+e;
+  return t;
+}
+
+/* ---------- Never show the same one twice on a device; shuffle everything ---------- */
+let rating=5,cur="";
 const st=document.getElementById("st"),msg=document.getElementById("msg");
-function renderStars(){st.innerHTML="";for(let i=1;i<=5;i++){const s=document.createElement("span");s.textContent="★";if(i<=rating)s.className="on";s.onclick=()=>{rating=i;renderStars();pick(true)};st.appendChild(s)}}
-function pick(reset){const a=IDEAS[rating];if(reset||idx[rating]==null){idx[rating]=Math.floor(Math.random()*a.length)}else{idx[rating]=(idx[rating]+1+Math.floor(Math.random()*(a.length-1)||0))%a.length}msg.textContent=a[idx[rating]]}
-document.getElementById("nx").onclick=()=>pick(false);
-document.getElementById("cp").onclick=async()=>{try{await navigator.clipboard.writeText(msg.textContent);document.getElementById("ok").textContent="Copy ho gaya ✔ ab Google review box mein paste karein"}catch(e){document.getElementById("ok").textContent="Text ko dabakar copy kar lein"}};
+function seen(){try{return JSON.parse(localStorage.getItem("bh_seen")||"[]")}catch(e){return[]}}
+function remember(t){try{const s=seen();s.push(t);localStorage.setItem("bh_seen",JSON.stringify(s.slice(-60)))}catch(e){}}
+function next(){
+  const s=seen();let t="",tries=0;
+  do{
+    const useBuild=(rating>=4)&&Math.random()<.5;
+    t=useBuild?build():pick(POOL[rating]);
+    tries++;
+  }while((t===cur||s.includes(t))&&tries<40);
+  cur=t;remember(t);msg.textContent=t;
+}
+function stars(){st.innerHTML="";for(let i=1;i<=5;i++){const s=document.createElement("span");s.textContent="★";if(i<=rating)s.className="on";s.onclick=()=>{rating=i;stars();next()};st.appendChild(s)}}
+async function copy(){try{await navigator.clipboard.writeText(msg.textContent);return true}catch(e){return false}}
+document.getElementById("nx").onclick=next;
+document.getElementById("cp").onclick=async()=>{document.getElementById("ok").textContent=(await copy())?"Copied ✔":"Press and hold the text to copy"};
 document.getElementById("go").href=REVIEW_URL;
-document.getElementById("post").onclick=async()=>{try{await navigator.clipboard.writeText(msg.textContent)}catch(e){}document.getElementById("ok").textContent="Copy ho gaya ✔ Google khul raha hai, review box mein paste karke Post dabayein";setTimeout(()=>{location.href=REVIEW_URL},900)};
-renderStars();pick(true);
+document.getElementById("post").onclick=async()=>{await copy();document.getElementById("ok").textContent="Copied ✔ Opening Google. Paste it and tap Post.";setTimeout(()=>{location.href=REVIEW_URL},900)};
+stars();next();
 </script>
 </body>
 </html>
