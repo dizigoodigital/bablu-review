@@ -88,6 +88,7 @@ const END_POS=["Would recommend.","Thank you, team!","Will visit again.","Worth 
 const END_MID=["Hope it improves.","There is room to improve.",""];
 const END_NEG=["I hope the team improves this.","Hoping for better next time.",""];
 
+function lc(t){return /^(I |I'|The owner|The team)/.test(t)&&!/^I[ ']/.test(t)?t.charAt(0).toLowerCase()+t.slice(1):(/^I[ ']/.test(t)?t:t.charAt(0).toLowerCase()+t.slice(1))}
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function topics(){return rating>=4?POS:NEG}
@@ -113,7 +114,7 @@ function draft(){
   const style=Math.floor(Math.random()*3);
   if(parts.length===1){body=parts[0]+"."}
   else if(style===0){body=parts.map(p=>p+".").join(" ")}
-  else if(style===1){body=parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1].charAt(0).toLowerCase()+parts[parts.length-1].slice(1)+"."}
+  else if(style===1){body=parts.slice(0,-1).join(", ")+" and "+lc(parts[parts.length-1])+"."}
   else{body=parts[0]+". "+parts.slice(1).map(p=>p+".").join(" ")}
   document.getElementById("msg").value=[op,body,en].filter(Boolean).join(" ").replace(/\s+/g," ").trim();
 }
