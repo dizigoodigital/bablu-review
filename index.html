@@ -15,11 +15,15 @@ p.s{text-align:center;color:var(--mut);margin:0 0 18px;font-size:14px}
 .card{background:var(--card);border:1px solid #2a2a2a;border-radius:16px;padding:16px;margin-bottom:14px}
 .stars{display:flex;justify-content:center;gap:8px;font-size:38px;cursor:pointer;user-select:none}
 .stars span{color:#444}.stars span.on{color:var(--gold)}
-.lbl{font-size:13px;color:var(--mut);margin-bottom:8px}
-.msg{font-size:17px;line-height:1.5;min-height:80px;white-space:pre-wrap}
+.lbl{font-size:13px;color:var(--mut);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid #3a3a3a;background:#1e1e1e;color:var(--tx);border-radius:20px;padding:8px 13px;font-size:14px;cursor:pointer}
+.chip.on{background:var(--gold);color:#111;border-color:var(--gold);font-weight:600}
+textarea{width:100%;min-height:120px;background:#101010;color:var(--tx);border:1px solid #333;border-radius:12px;padding:12px;font-size:16px;line-height:1.5;font-family:inherit;resize:vertical}
 .row{display:flex;gap:10px;margin-top:12px}
-button,a.b{flex:1;border:0;border-radius:12px;padding:14px 10px;font-size:15px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none}
+button.act{flex:1;border:0;border-radius:12px;padding:14px 10px;font-size:15px;font-weight:600;cursor:pointer}
 .g{background:var(--gold);color:#111}.o{background:#262626;color:var(--tx)}
+a.b{display:block;margin-top:10px;border-radius:12px;padding:14px 10px;font-size:15px;font-weight:600;text-align:center;text-decoration:none}
 .n{font-size:12px;color:var(--mut);text-align:center;margin-top:10px;line-height:1.5}
 .ok{color:#8fd18f;text-align:center;font-size:13px;min-height:16px;margin-top:6px}
 </style>
@@ -31,139 +35,95 @@ button,a.b{flex:1;border:0;border-radius:12px;padding:14px 10px;font-size:15px;f
   <p class="s">Pilibhit · Thank you for visiting us 🙏</p>
 
   <div class="card">
-    <div class="lbl">1) Tap your rating, based on your own experience</div>
+    <div class="lbl">1) How was your experience? Tap your rating</div>
     <div class="stars" id="st"></div>
   </div>
 
   <div class="card">
-    <div class="lbl">2) A suggested review. Use it as it is, or change it to your own words</div>
-    <div class="msg" id="msg"></div>
+    <div class="lbl">2) What stood out for you? Tap any that apply</div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="card">
+    <div class="lbl">3) Your review. This is just a starting point, please change it or write your own words</div>
+    <textarea id="msg" maxlength="600"></textarea>
     <div class="row">
-      <button class="o" id="nx">🔄 Another one</button>
-      <button class="o" id="cp">📋 Copy</button>
+      <button class="act o" id="nx">🔄 New draft</button>
+      <button class="act o" id="cp">📋 Copy</button>
     </div>
     <div class="ok" id="ok"></div>
   </div>
 
-  <button class="g" id="post" style="width:100%;font-size:17px;padding:16px">Copy &amp; open Google review</button>
-  <a class="b o" id="go" style="display:block;margin-top:10px" href="#" target="_blank" rel="noopener">Just open the Google review page</a>
-  <div class="n">Google will open next. Paste the text into the review box, edit it if you like, and tap Post.<br>This is only a suggestion. Please share your honest experience.</div>
+  <button class="act g" id="post" style="width:100%;font-size:17px;padding:16px">Copy &amp; open Google review</button>
+  <a class="b o" id="go" href="#" target="_blank" rel="noopener">Just open the Google review page</a>
+  <div class="n">Google opens next. Paste your review, add a line about your own visit if you can, and tap Post.<br>Please share only your honest experience.</div>
 </div>
 
 <script>
 const REVIEW_URL="https://g.page/r/CdTDtgv3axhcEBM/review";
 
-/* ---------- Ready-made short reviews, by rating ---------- */
-const POOL={
-5:[
-"Got my hair patch done here and it looks completely natural. Very happy with the result.",
-"Great experience. The owner explained everything clearly before starting and the finish is really neat.",
-"Honestly didn't expect it to look this natural. Friends couldn't even tell. Thank you team!",
-"Clean studio, polite staff and a very natural result. Worth a visit if you're in Pilibhit.",
-"Was nervous about trying a hair patch, but they made me comfortable and the fitting was perfect.",
-"The hairline looks so real. Very professional work, I'm quite impressed.",
-"Good service and honest advice. No pressure at all, they just explained my options.",
-"Visited for a consultation and ended up getting a patch fitted. Super happy with it.",
-"Excellent work! The patch matches my hair colour and style really well.",
-"My confidence is back. The team was patient and the result looks great.",
-"Quick, neat and professional. Really liked the way the patch blends with my own hair.",
-"Very friendly owner, good knowledge and a clean setup. Recommended.",
-"Had my old patch serviced here. It feels brand new again. Thanks a lot!",
-"Comfortable to wear and looks natural. The staff also told me how to take care of it.",
-"One of the better places for hair patch work in Pilibhit. Happy with my experience.",
-"Smooth process from start to finish. The styling at the end was spot on.",
-"Great job on the fitting. Looks natural even in close-up. Will visit again for servicing.",
-"They took time to understand what I wanted and the result matches it exactly.",
-"Professional team and very reasonable communication. I'm satisfied with the work.",
-"Went in for a wig and the options were explained well. Fit and finish are great.",
-"Really good experience, the staff is supportive and the studio is well maintained.",
-"The patch feels light and looks natural. Thank you for the honest guidance!",
-"Very neat work. I got compliments from family the same day.",
-"Great service, easy to find on Station Road, and the result speaks for itself.",
-"Loved the finishing. The team pays attention to small details.",
-"Happy with the colour matching and density. Looks just like my natural hair.",
-"I recommend this place to anyone looking for a natural-looking hair solution.",
-"Skilled work and a very welcoming owner. Glad I came here.",
-"Everything was explained clearly, from care to washing. Very satisfied.",
-"Awesome work, bhai. Natural look aaya hai, exactly what I wanted.",
-"Very good experience. Patch ekdum natural lag raha hai. Thanks to the team.",
-"Good place, honest people and neat work. Happy customer.",
-"Excellent service! The team made the whole process easy and stress free.",
-"The fitting was quick and painless, and the look is really natural.",
-"Impressed with the quality of work. Nothing looks fake at all.",
-"Well done team. My new look feels really comfortable.",
-"Supportive staff and a good result. I'd happily visit again.",
-"Nice and clean studio. The patch looks great and sits perfectly.",
-"Got exactly the look I was hoping for. Thank you!",
-"Very good work and good behaviour. Recommended for anyone facing hair loss.",
-"Fantastic result. It was a pleasant experience from start to end.",
-"They guided me step by step and the final look is amazing.",
-"Professional, polite and quick. Really glad I chose this place.",
-"My patch looks so natural that even I forget it's there. Great work!",
-"Best experience I've had for hair patch fixing in the city.",
-"Honest suggestions and careful work. I'm very pleased.",
-"Neat finishing, natural hairline and friendly service. Thank you!",
-"Went with some doubts, came back happy. The result looks really good.",
-"Satisfied with the service and the follow-up advice. Good team.",
-"Very natural look and a comfortable fit. Would recommend."
-],
-4:[
-"Good work and a natural look. Had to wait a little, but the result was worth it.",
-"Nice experience overall. The patch looks natural and the staff was helpful.",
-"Happy with the fitting and finish. Just a little wait at the start, otherwise all good.",
-"Good service and clean studio. The result looks natural.",
-"Pleased with the work. A few more options to see would have been nice, but I'm satisfied.",
-"Helpful team and neat work. I'd recommend it.",
-"Overall a good experience, and the patch fits comfortably.",
-"Quality work and honest advice. Slightly busy when I went, but handled well."
-],
-3:[
-"The work was okay and the patch looks fine. Some things could be explained a bit better.",
-"Average experience overall. The fitting was fine, but I expected a bit more detail on aftercare.",
-"Decent service. The result is acceptable, though there is room to improve."
-],
-2:[
-"The result was below what I expected and some points were not explained clearly.",
-"Not fully satisfied. The communication could have been better."
-],
-1:[
-"My experience was not good. I hope the team improves its service and communication."
-]};
+/* Topics people can tap, with several ways of saying each one. */
+const POS={
+ "Natural look":["The patch looks very natural","It looks natural, even up close","The result looks like my own hair","Nobody can tell it's a patch","The finish looks really natural"],
+ "Friendly staff":["The owner was friendly and patient","Staff were polite and helpful","The team made me feel comfortable","Everyone was very welcoming","The owner took time to answer my questions"],
+ "Clean studio":["The studio is clean and well kept","Nice, clean place","The setup is neat and hygienic","Clean studio and a calm atmosphere"],
+ "Honest advice":["They gave honest advice without any pressure","Everything was explained clearly beforehand","I got straight answers to all my doubts","They told me what suits me, not what sells"],
+ "Comfortable fit":["The fit is comfortable","It feels light and comfortable","It sits well and feels secure","It's comfortable to wear all day"],
+ "Quick service":["The work was done quickly","It was a smooth and quick process","They finished on time","No long waiting, the process was smooth"],
+ "Neat finishing":["The finishing is neat","The styling at the end was spot on","Great attention to small details","The hairline and styling are done well"],
+ "Colour match":["The colour and density match my hair well","They matched my hair colour properly","The colour matching is great"],
+ "Servicing / care":["They also explained how to wash and care for it","I got proper tips on maintenance","My old patch was serviced nicely"]
+};
+const NEG={
+ "Waiting time":["I had to wait longer than expected","The waiting time was long"],
+ "Communication":["Communication could be better","Some things were not explained clearly"],
+ "Result":["The result was below my expectation","The finish could have been better"],
+ "Aftercare info":["I would have liked more details on aftercare","Care instructions were not very clear"],
+ "Staff behaviour":["The staff could have been more attentive","I expected more support from the staff"]
+};
+const OPEN_POS=["Good experience here.","Happy with my visit.","Had a nice experience.","Glad I came here.","Pleased with the service.","Visited recently.","Went in for a hair patch.","Came here for a consultation.","","",""];
+const OPEN_MID=["Visited recently.","Here is my honest feedback.","My experience was average.","Feedback after my visit.",""];
+const OPEN_NEG=["Sharing my honest feedback.","Visited recently.","My experience was not great.",""];
+const END_POS=["Would recommend.","Thank you, team!","Will visit again.","Worth a visit.","Thanks a lot.","Recommended.","","","Happy customer."];
+const END_MID=["Hope it improves.","There is room to improve.",""];
+const END_NEG=["I hope the team improves this.","Hoping for better next time.",""];
 
-/* ---------- Mix-and-match builder for extra variety (5 and 4 stars) ---------- */
-const OPEN=["Really happy with","Very satisfied with","Great experience with","Good experience at","Glad I visited","Pleased with","Thankful for","Had a nice time at"];
-const WHAT=["my new hair patch","the hair patch fitting","the consultation and fitting","the wig fitting","the whole process","the hair patch service","my patch servicing","the styling and finish"];
-const WHY=["The look is natural and comfortable.","The staff was polite and patient.","It was explained clearly before starting.","The finish is neat and professional.","It matches my hair colour well.","The studio is clean and well kept.","The owner gave honest advice.","The hairline looks very natural.","It was quick and hassle free."];
-const END=["Thank you, team!","Would recommend.","Will visit again.","Worth a visit.","Thanks a lot!","Happy customer.","Highly recommended.",""];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
-function build(){
-  let t=pick(OPEN)+" "+pick(WHAT)+". "+pick(WHY);
-  if(Math.random()<.45){let w2=pick(WHY);while(t.includes(w2))w2=pick(WHY);t+=" "+w2}
-  const e=pick(END);if(e)t+=" "+e;
-  return t;
-}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function topics(){return rating>=4?POS:NEG}
+let rating=5,selected=new Set();
 
-/* ---------- Never show the same one twice on a device; shuffle everything ---------- */
-let rating=5,cur="";
-const st=document.getElementById("st"),msg=document.getElementById("msg");
-function seen(){try{return JSON.parse(localStorage.getItem("bh_seen")||"[]")}catch(e){return[]}}
-function remember(t){try{const s=seen();s.push(t);localStorage.setItem("bh_seen",JSON.stringify(s.slice(-60)))}catch(e){}}
-function next(){
-  const s=seen();let t="",tries=0;
-  do{
-    const useBuild=(rating>=4)&&Math.random()<.5;
-    t=useBuild?build():pick(POOL[rating]);
-    tries++;
-  }while((t===cur||s.includes(t))&&tries<40);
-  cur=t;remember(t);msg.textContent=t;
+function chipsRender(){
+  const c=document.getElementById("chips");c.innerHTML="";
+  Object.keys(topics()).forEach(k=>{
+    const b=document.createElement("button");b.type="button";b.className="chip"+(selected.has(k)?" on":"");b.textContent=k;
+    b.onclick=()=>{selected.has(k)?selected.delete(k):selected.add(k);chipsRender();draft()};
+    c.appendChild(b);
+  });
 }
-function stars(){st.innerHTML="";for(let i=1;i<=5;i++){const s=document.createElement("span");s.textContent="★";if(i<=rating)s.className="on";s.onclick=()=>{rating=i;stars();next()};st.appendChild(s)}}
-async function copy(){try{await navigator.clipboard.writeText(msg.textContent);return true}catch(e){return false}}
-document.getElementById("nx").onclick=next;
-document.getElementById("cp").onclick=async()=>{document.getElementById("ok").textContent=(await copy())?"Copied ✔":"Press and hold the text to copy"};
+function draft(){
+  const T=topics();let keys=[...selected].filter(k=>T[k]);
+  if(!keys.length){keys=shuffle(Object.keys(T)).slice(0,2)}
+  keys=shuffle(keys).slice(0,3);
+  const parts=keys.map(k=>pick(T[k]));
+  const op=rating>=4?pick(OPEN_POS):rating===3?pick(OPEN_MID):pick(OPEN_NEG);
+  const en=rating>=4?pick(END_POS):rating===3?pick(END_MID):pick(END_NEG);
+  // join the topic phrases in a few different natural ways
+  let body;
+  const style=Math.floor(Math.random()*3);
+  if(parts.length===1){body=parts[0]+"."}
+  else if(style===0){body=parts.map(p=>p+".").join(" ")}
+  else if(style===1){body=parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1].charAt(0).toLowerCase()+parts[parts.length-1].slice(1)+"."}
+  else{body=parts[0]+". "+parts.slice(1).map(p=>p+".").join(" ")}
+  document.getElementById("msg").value=[op,body,en].filter(Boolean).join(" ").replace(/\s+/g," ").trim();
+}
+function starsRender(){const st=document.getElementById("st");st.innerHTML="";for(let i=1;i<=5;i++){const s=document.createElement("span");s.textContent="★";if(i<=rating)s.className="on";s.onclick=()=>{const wasPos=rating>=4;rating=i;if((rating>=4)!==wasPos)selected.clear();starsRender();chipsRender();draft()};st.appendChild(s)}}
+async function copy(){const t=document.getElementById("msg").value;try{await navigator.clipboard.writeText(t);return true}catch(e){const m=document.getElementById("msg");m.select();try{return document.execCommand("copy")}catch(_){return false}}}
+document.getElementById("nx").onclick=draft;
+document.getElementById("cp").onclick=async()=>{document.getElementById("ok").textContent=(await copy())?"Copied ✔":"Select the text and copy it"};
 document.getElementById("go").href=REVIEW_URL;
 document.getElementById("post").onclick=async()=>{await copy();document.getElementById("ok").textContent="Copied ✔ Opening Google. Paste it and tap Post.";setTimeout(()=>{location.href=REVIEW_URL},900)};
-stars();next();
+starsRender();chipsRender();draft();
 </script>
 </body>
 </html>
